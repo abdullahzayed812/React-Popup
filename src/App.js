@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showPopUp: false
+    }
+    this.showPopUp = this.showPopUp.bind(this);
+  }
+  showPopUp() {
+    const showBool = this.state.showPopUp;
+    this.setState({showPopUp: !showBool});
+  }
+  render() {
+    return (
+      <div className="App">
+        <h1>Pup up Modal</h1>
+        <button
+          type="button"
+          onClick={this.showPopUp}
+        >Click to {this.state.showPopUp ? "Hide" : "Show"}</button>
+        <div
+          className={this.state.showPopUp ? "pop-up active" : "pop-up"}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          <img src="/smufer.jfif" alt="" />
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
